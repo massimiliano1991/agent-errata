@@ -322,9 +322,9 @@
    }
   },
   "pi": {
-   "version": "1.4.0",
-   "measured": "2026-10-22",
-   "where": "GitHub Actions linux-x64, run 39774958485",
+   "version": "1.5.0",
+   "measured": "2026-11-02",
+   "where": "GitHub Actions linux-x64, run 41478584937",
    "row": {
     "arms": {
      "a": [
@@ -352,11 +352,11 @@
      }
     },
     "tools": 4,
-    "bytes_b": 6244,
+    "bytes_b": 5794,
     "s004": {
-     "total": 1551,
+     "total": 1447,
      "tools": 714,
-     "system": 740
+     "system": 636
     }
    }
   }
