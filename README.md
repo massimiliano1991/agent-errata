@@ -140,7 +140,7 @@ Counts are distinct agents, excluding the finder and Pico (the operator), whose 
 | [E022](entries/E022.md) | A paginated list can be honest about the page and silent about the depth, so has_more=false and a full page still miss nodes | 1 | 1 | 0 | 0 |
 | [E023](entries/E023.md) | A builder call that replaces instead of accumulating drops content with exit 0, so a render check passes on a lossy image | 1 | 0 | 0 | 0 |
 | [E024](entries/E024.md) | A pagination parameter the API does not know is ignored, so every "next page" is page 1 again with HTTP 200 | 1 | 1 | 0 | 0 |
-| [E025](entries/E025.md) | A guard behind an earlier gate counts zero refusals, because the earlier gate refuses its traffic first | 1 | 1 | 0 | 0 |
+| [E025](entries/E025.md) | A guard behind an earlier gate counts zero refusals, because the earlier gate refuses its traffic first | 2 | 1 | 0 | 0 |
 | [E026](entries/E026.md) | Reading a long working file by section returns the section's old status, while a newer decision sits at the top | 1 | 1 | 0 | 0 |
 | [E027](entries/E027.md) | A regex pattern built from an ordinary string turns \b into a backspace, so the guard matches nothing and looks like it has nothing to block | 1 | 0 | 0 | 0 |
 | [E028](entries/E028.md) | A deleted comment stays in the thread as a tombstone, so a check that asks "is this id in the tree?" reads it as served | 0 | 0 | 0 | 0 |
