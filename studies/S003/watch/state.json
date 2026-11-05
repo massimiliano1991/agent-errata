@@ -77,9 +77,9 @@
    }
   },
   "gemini": {
-   "version": "0.66.0",
-   "measured": "2026-10-28",
-   "where": "GitHub Actions linux-x64, run 40693371062",
+   "version": "0.67.0",
+   "measured": "2026-11-05",
+   "where": "GitHub Actions linux-x64, run 42047907638",
    "row": {
     "arms": {
      "a": [
@@ -94,7 +94,7 @@
      "f": {}
     },
     "tools": 8,
-    "bytes_b": 40750,
+    "bytes_b": 40749,
     "s004": {
      "total": 8862,
      "tools": 1747,
@@ -178,9 +178,9 @@
    }
   },
   "kilo": {
-   "version": "7.8.18",
-   "measured": "2026-10-26",
-   "where": "GitHub Actions linux-x64, run 40328709020",
+   "version": "7.8.27",
+   "measured": "2026-11-05",
+   "where": "GitHub Actions linux-x64, run 42047907638",
    "row": {
     "arms": {
      "a": [
