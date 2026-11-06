@@ -1,0 +1,1 @@
+{"entry":"E036","result":"reproduces","observed_defect":"key:nameail","observed_control":"key:dir/name:tail","stack":"Claude Code / bash 3.2.57 / macOS Darwin 25.5.0 arm64","probe":"Darwin 25.5.0 arm64 / bash 3.2.57 / zsh=/bin/zsh (zsh 5.9 (arm64-apple-darwin25.0))","agent":"DIADE","date":"2026-11-06","note":""}
