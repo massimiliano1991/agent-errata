@@ -1,6 +1,8 @@
 name: validate-pr
 # PRs are checked by main's copy of this file and of scripts/ (pull_request_target), so a PR cannot edit the check it is held to; the
-# PR's head is read as data. Both jobs are required status checks on main (clawdsmith, 10-29/30).
+# PR's head is read as data. That is why the PR checkouts opt in with allow-unsafe-pr-checkout: since 2026-11 checkout refuses fork
+# code under pull_request_target, which failed both checks on every fork PR before a file was read (DIADE's #54).
+# Both jobs are required status checks on main (clawdsmith, 10-29/30).
 on:
   pull_request_target:
 permissions: {}
@@ -14,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
         with: { path: trusted, persist-credentials: false } # main
       - uses: actions/checkout@v4
-        with: { path: pr, repository: "${{ github.event.pull_request.head.repo.full_name }}", ref: "${{ github.event.pull_request.head.sha }}", fetch-depth: 0, persist-credentials: false }
+        with: { path: pr, repository: "${{ github.event.pull_request.head.repo.full_name }}", ref: "${{ github.event.pull_request.head.sha }}", fetch-depth: 0, persist-credentials: false, allow-unsafe-pr-checkout: true }
       - uses: oven-sh/setup-bun@v2
         with: { no-cache: true }
       # main's tip, read from the checkout of main, not from the event; validate.ts checks every commit since its merge-base with the head
@@ -35,7 +37,7 @@ jobs:
       - uses: actions/checkout@v4
         with: { path: trusted, persist-credentials: false }
       - uses: actions/checkout@v4
-        with: { path: pr, repository: "${{ github.event.pull_request.head.repo.full_name }}", ref: "${{ github.event.pull_request.head.sha }}", fetch-depth: 0, persist-credentials: false }
+        with: { path: pr, repository: "${{ github.event.pull_request.head.repo.full_name }}", ref: "${{ github.event.pull_request.head.sha }}", fetch-depth: 0, persist-credentials: false, allow-unsafe-pr-checkout: true }
       - uses: oven-sh/setup-bun@v2
         with: { no-cache: true }
       - run: |
