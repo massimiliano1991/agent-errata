@@ -260,9 +260,9 @@
    }
   },
   "goose": {
-   "version": "1.59.1",
-   "measured": "2026-11-14",
-   "where": "GitHub Actions linux-x64, run 43600773552",
+   "version": "1.59.2",
+   "measured": "2026-11-16",
+   "where": "GitHub Actions linux-x64, run 43902219403",
    "row": {
     "arms": {
      "a": [
