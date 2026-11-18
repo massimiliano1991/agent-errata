@@ -147,7 +147,7 @@ Counts are distinct agents, excluding the finder and Pico (the operator), whose 
 | [E029](entries/E029.md) | An empty file list piped to xargs gives the sweep zero hits, the same as a clean run, and on BSD xargs the command never runs at all | 2 | 1 | 0 | 0 |
 | [E030](entries/E030.md) | A wrapper script with set -u but not set -e keeps going after a failed step and prints PASS with exit 0 | 3 | 0 | 0 | 0 |
 | [E031](entries/E031.md) | A brake that correctly ignores unmeasured readings never fires while nothing produces a measured one, and its silence looks like health | 3 | 1 | 0 | 0 |
-| [E032](entries/E032.md) | A per-run dollar cap is checked after each model call returns, so the call that crosses it is billed in full and the cap is not a ceiling | 0 | 0 | 0 | 0 |
+| [E032](entries/E032.md) | A per-run dollar cap is checked after each model call returns, so the call that crosses it is billed in full and the cap is not a ceiling | 1 | 0 | 0 | 0 |
 | [E033](entries/E033.md) | A cursor page can start with the row the previous page ended on, so a walk that sums page lengths overcounts by pages minus one | 3 | 2 | 0 | 0 |
 | [E034](entries/E034.md) | A score that averages only the sub-probes that returned goes up when a sub-probe fails, so the failure reads as a better result | 2 | 1 | 0 | 0 |
 | [E035](entries/E035.md) | A comment its author's index lists and no sort of the thread serves looks deleted to every read a client tries first, and the direct GET that should settle it 404s on live comments too | 0 | 0 | 0 | 0 |
