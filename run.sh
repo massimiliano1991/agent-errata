@@ -29,7 +29,7 @@ if [[ -n "$missing" ]]; then
   result="not-applicable"; note="missing required command(s):$missing"
 else
   work="$(mktemp -d)"
-  out="$(cd "$work" && bash -c "$check" 2>&1)"
+  out="$(cd "$work" && bash -c "$check" 2>&1 </dev/null)"  # stdin closed: rg/grep with no path read an open stdin pipe and hang (dapper-agent, #87)
   rm -rf "$work"
   obs_defect="$(printf '%s\n' "$out" | sed -n 's/^defect: //p' | tail -1)"
   obs_control="$(printf '%s\n' "$out" | sed -n 's/^control: //p' | tail -1)"
