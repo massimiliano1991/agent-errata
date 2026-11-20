@@ -2,9 +2,9 @@
  "note": "Last-measured row per harness. Baseline = the 2026-10-02 sweep (container, Linux aarch64; S004 tokens counted 10-03). Written by watch.ts after each re-measure.",
  "harnesses": {
   "claude": {
-   "version": "2.1.328",
-   "measured": "2026-11-19",
-   "where": "GitHub Actions linux-x64, run 44559494778",
+   "version": "2.1.329",
+   "measured": "2026-11-20",
+   "where": "GitHub Actions linux-x64, run 44764489413",
    "row": {
     "arms": {
      "a": [
@@ -40,9 +40,9 @@
    }
   },
   "codex": {
-   "version": "0.170.0",
-   "measured": "2026-11-18",
-   "where": "GitHub Actions linux-x64, run 44339372122",
+   "version": "0.171.0",
+   "measured": "2026-11-20",
+   "where": "GitHub Actions linux-x64, run 44764489413",
    "row": {
     "arms": {
      "a": [
@@ -68,18 +68,18 @@
      }
     },
     "tools": 9,
-    "bytes_b": 40094,
+    "bytes_b": 40919,
     "s004": {
-     "total": 9619,
-     "tools": 4059,
-     "system": 4585
+     "total": 9827,
+     "tools": 4293,
+     "system": 4583
     }
    }
   },
   "gemini": {
-   "version": "0.69.0",
-   "measured": "2026-11-19",
-   "where": "GitHub Actions linux-x64, run 44559494778",
+   "version": "0.70.0",
+   "measured": "2026-11-20",
+   "where": "GitHub Actions linux-x64, run 44764489413",
    "row": {
     "arms": {
      "a": [
@@ -94,7 +94,7 @@
      "f": {}
     },
     "tools": 8,
-    "bytes_b": 40750,
+    "bytes_b": 40748,
     "s004": {
      "total": 8862,
      "tools": 1747,
@@ -178,9 +178,9 @@
    }
   },
   "kilo": {
-   "version": "7.8.27",
-   "measured": "2026-11-05",
-   "where": "GitHub Actions linux-x64, run 42047907638",
+   "version": "7.8.32",
+   "measured": "2026-11-20",
+   "where": "GitHub Actions linux-x64, run 44764489413",
    "row": {
     "arms": {
      "a": [
@@ -216,9 +216,9 @@
    }
   },
   "crush": {
-   "version": "0.101.0",
-   "measured": "2026-11-13",
-   "where": "GitHub Actions linux-x64, run 43444994553",
+   "version": "0.102.0",
+   "measured": "2026-11-20",
+   "where": "GitHub Actions linux-x64, run 44764489413",
    "row": {
     "arms": {
      "a": [
@@ -250,19 +250,19 @@
       "S003C-F-CLAUDEMD": 2
      }
     },
-    "tools": 26,
-    "bytes_b": 51814,
+    "tools": 30,
+    "bytes_b": 62950,
     "s004": {
-     "total": 12622,
-     "tools": 6953,
+     "total": 15403,
+     "tools": 9734,
      "system": 5495
     }
    }
   },
   "goose": {
-   "version": "1.60.1",
-   "measured": "2026-11-18",
-   "where": "GitHub Actions linux-x64, run 44339372122",
+   "version": "1.60.2",
+   "measured": "2026-11-20",
+   "where": "GitHub Actions linux-x64, run 44764489413",
    "row": {
     "arms": {
      "a": [
@@ -322,9 +322,9 @@
    }
   },
   "pi": {
-   "version": "1.5.2",
-   "measured": "2026-11-10",
-   "where": "GitHub Actions linux-x64, run 42839625575",
+   "version": "1.6.0",
+   "measured": "2026-11-20",
+   "where": "GitHub Actions linux-x64, run 44764489413",
    "row": {
     "arms": {
      "a": [
