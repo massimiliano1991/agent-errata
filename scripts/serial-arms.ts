@@ -1,8 +1,8 @@
-// Fixture arms for serial ordering and draws bound at signature (swipepredictbot, 10-30, Moltbook c031d4c2 b6465e06). No network:
+// Fixture arms for serial ordering, draws bound at signature and the bound round's gap (swipepredictbot, 10-30, Moltbook c031d4c2 b6465e06). No network:
 // Rekor and git are stand-ins. Usage: bun scripts/serial-arms.ts [old-witness.ts] — with a path to an older witness.ts (e.g. 036a1a6's),
 // also prints what that version does on the same fixtures. Exits 1 if an arm fails on this version.
-import { signedSerials, orderFail, owedDraw, rowFail, type Entry, type Tree } from "./witness.ts";
-import type { Beacon } from "./draw.ts";
+import { signedSerials, orderFail, owedDraw, rowFail, boundRound, MARGIN, type Entry, type Tree } from "./witness.ts";
+import { DRAND, roundTime, type Beacon } from "./draw.ts";
 
 const fails: string[] = [];
 const arm = (name: string, ok: boolean, got: unknown) => { console.log(`${ok ? "ok  " : "FAIL"} ${name}: ${JSON.stringify(got)}`); if (!ok) fails.push(name); };
@@ -41,6 +41,24 @@ const p13 = now.find((p) => p.serial === "K001-13")!;
 const R = "ab".repeat(32);
 const reviewer = owedDraw({ serial: "K001-13", row: p13.row }, "Z", R, beacons);
 arm("13 owed: runner A, row as of C1, reviewer drawn", p13.runner === "A" && p13.at === C1 && ["X", "Y", "B"].includes(reviewer), { runner: p13.runner, at: String(p13.at).slice(0, 7), reviewer });
+
+// (3) The bound round's gap (swipepredictbot, 10-30, KNOWN-ISSUES). For every integratedTime t, the bound round publishes MARGIN to
+// MARGIN + period - 1 s after t, so it is the first round at least MARGIN s after the entry. This asserts the gap itself, since bindFail
+// recomputes with the same boundRound. 3000 consecutive t from K001-14's intent entry (Rekor logIndex 3611601583, integratedTime
+// 1793429910, bound to round 6599966 at 07:00:00, the tie in KNOWN-ISSUES) cover every second of a period 100 times.
+const T0 = 1_793_429_910, N = 3000;
+const gapMisses = (f: (t: number) => number) => {
+  let n = 0;
+  for (let t = T0; t < T0 + N; t++) { const g = roundTime(f(t)) - t; if (!(MARGIN <= g && g < MARGIN + DRAND.period)) n++; }
+  return n;
+};
+arm(`boundRound gap is ${MARGIN}..${MARGIN + DRAND.period - 1} s for ${N} consecutive t`, gapMisses(boundRound) === 0, gapMisses(boundRound));
+arm("K001-14's entry binds round 6599966", boundRound(T0) === 6599966, boundRound(T0));
+// The check can fail: the two wrong edits from KNOWN-ISSUES must miss (all t without the + 1; every t off a 30 s boundary with floor).
+const noPlusOne = (t: number) => Math.ceil((t + MARGIN - DRAND.genesis) / DRAND.period);
+const floored = (t: number) => Math.floor((t + MARGIN - DRAND.genesis) / DRAND.period) + 1;
+arm("control: without the + 1, every t misses", gapMisses(noPlusOne) === N, gapMisses(noPlusOne));
+arm("control: floor for ceil, every t off a period boundary misses", gapMisses(floored) === N - N / DRAND.period, gapMisses(floored));
 
 if (process.argv[2]) {
   const old = await import(process.argv[2]);
