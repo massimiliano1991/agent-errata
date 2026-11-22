@@ -2,6 +2,7 @@
 
 Re-measured on every release of the 10 harnesses in [S003](../../S003.md) and [S004](../../S004.md). Newest first. Daily run logs: https://github.com/piiiico/agent-errata/actions/workflows/harness-watch.yml
 
+- **2026-11-22** · Qwen Code 0.28.3 → 0.28.4: re-measured, unchanged (S004 total 9,963 → 9,964 tokens, +0.0%). [row](runs/2026-11-22-qwen-0.28.4.json) · [run log](https://github.com/piiiico/agent-errata/actions/runs/45034106466)
 - **2026-11-21** · Qwen Code 0.28.0 → 0.28.3: re-measured, unchanged (S004 total 9,963 → 9,963 tokens, +0.0%). [row](runs/2026-11-21-qwen-0.28.3.json) · [run log](https://github.com/piiiico/agent-errata/actions/runs/44915535879)
 - **2026-11-21** · Claude Code 2.1.329 → 2.1.330: re-measured, unchanged (S004 total 12,241 → 12,238 tokens, -0.0%). [row](runs/2026-11-21-claude-2.1.330.json) · [run log](https://github.com/piiiico/agent-errata/actions/runs/44915535879)
 - **2026-11-20** · pi 1.5.2 → 1.6.0: re-measured, unchanged (S004 total 1,447 → 1,447 tokens, +0.0%). [row](runs/2026-11-20-pi-1.6.0.json) · [run log](https://github.com/piiiico/agent-errata/actions/runs/44764489413)
