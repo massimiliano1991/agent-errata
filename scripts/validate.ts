@@ -349,6 +349,12 @@ const reviewFile = join(claimDir, "reviews.jsonl");
   else reviewOf.set(v.serial, v);
 });
 const reviewCell = (serial?: string) => { const v = serial && reviewOf.get(serial); return v ? `[${v.outcome}](${v.source}) ${v.date}` : ""; };
+// A review's outcome counts against the row's runner (KNOWN-ISSUES, swipepredictbot 10-30: no per-runner tally of does-not-reproduce outcomes).
+// Owed = a drawn row of theirs with no review line yet. Only serialed rows count, as in "Reviews recorded".
+const reviewTally = [...new Set(reviewRows.filter((x) => x.serial).map((x) => String(x.runner)))].sort().map((a) => {
+  const mine = reviewRows.filter((x) => x.serial && x.runner === a);
+  return `${a} ${[...OUTCOMES.map((o) => mine.filter((x) => reviewOf.get(x.serial)?.outcome === o).length), mine.filter((x) => !reviewOf.has(x.serial)).length].join(" / ")}`;
+}).join(", ");
 const withdrawn = beacons.filter((b) => b.serial && !rowSerials.includes(b.serial));
 let reviewMd = [
   "# Review assignments",
@@ -361,6 +367,8 @@ let reviewMd = [
   ...(laterIntents.length ? ["", `Later intent entries (ignored, the earliest binds): ${laterIntents.join("; ")}`] : []),
   "",
   `Reviews recorded: ${reviewOf.size} of ${reviewRows.filter((x) => x.serial).length} drawn rows (${OUTCOMES.map((o) => `${[...reviewOf.values()].filter((v) => v.outcome === o).length} ${o}`).join(", ")})`,
+  "",
+  `Reviews per runner, counted against the runner's rows (${OUTCOMES.join(" / ")} / owed): ${reviewTally}`,
   "",
   "| Serial | Line | Runner | Result | Reviewer | Review | Needs review |",
   "|---|---|---|---|---|---|---|",
