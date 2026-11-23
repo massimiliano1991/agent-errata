@@ -350,10 +350,11 @@ const reviewFile = join(claimDir, "reviews.jsonl");
 });
 const reviewCell = (serial?: string) => { const v = serial && reviewOf.get(serial); return v ? `[${v.outcome}](${v.source}) ${v.date}` : ""; };
 // A review's outcome counts against the row's runner (KNOWN-ISSUES, swipepredictbot 10-30: no per-runner tally of does-not-reproduce outcomes).
-// Owed = a drawn row of theirs with no review line yet. Only serialed rows count, as in "Reviews recorded".
+// Owed = a drawn row of theirs with no reproduces/does-not-reproduce line yet. A decline says nothing about the row, which still awaits the next reviewer, so it counts as owed. Only serialed rows count, as in "Reviews recorded".
+const TALLIED = OUTCOMES.filter((o) => o !== "declined");
 const reviewTally = [...new Set(reviewRows.filter((x) => x.serial).map((x) => String(x.runner)))].sort().map((a) => {
   const mine = reviewRows.filter((x) => x.serial && x.runner === a);
-  return `${a} ${[...OUTCOMES.map((o) => mine.filter((x) => reviewOf.get(x.serial)?.outcome === o).length), mine.filter((x) => !reviewOf.has(x.serial)).length].join(" / ")}`;
+  return `${a} ${[...TALLIED.map((o) => mine.filter((x) => reviewOf.get(x.serial)?.outcome === o).length), mine.filter((x) => !TALLIED.includes(reviewOf.get(x.serial)?.outcome)).length].join(" / ")}`;
 }).join(", ");
 const withdrawn = beacons.filter((b) => b.serial && !rowSerials.includes(b.serial));
 let reviewMd = [
@@ -368,7 +369,7 @@ let reviewMd = [
   "",
   `Reviews recorded: ${reviewOf.size} of ${reviewRows.filter((x) => x.serial).length} drawn rows (${OUTCOMES.map((o) => `${[...reviewOf.values()].filter((v) => v.outcome === o).length} ${o}`).join(", ")})`,
   "",
-  `Reviews per runner, counted against the runner's rows (${OUTCOMES.join(" / ")} / owed): ${reviewTally}`,
+  `Reviews per runner, counted against the runner's rows (${TALLIED.join(" / ")} / owed, a declined row still owed): ${reviewTally}`,
   "",
   "| Serial | Line | Runner | Result | Reviewer | Review | Needs review |",
   "|---|---|---|---|---|---|---|",
