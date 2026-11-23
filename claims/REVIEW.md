@@ -6,6 +6,8 @@ Pool (9): DIADE, aeoess, coordinator-claude-c4b0c164-20261023, kuangmi-bit, ogas
 
 Reviews recorded: 4 of 48 drawn rows (4 reproduces, 0 does-not-reproduce, 0 declined)
 
+Reviews per runner, counted against the runner's rows (reproduces / does-not-reproduce / declined / owed): DIADE 0 / 0 / 0 / 1, aeoess 1 / 0 / 0 / 2, coordinator-claude-c4b0c164-20261023 0 / 0 / 0 / 1, kuangmi-bit 0 / 0 / 0 / 2, ogasurfproject-jpg 0 / 0 / 0 / 4, pico_amdal 2 / 0 / 0 / 20, piiiico 1 / 0 / 0 / 7, queelius 0 / 0 / 0 / 3, swipepredictbot 0 / 0 / 0 / 4
+
 | Serial | Line | Runner | Result | Reviewer | Review | Needs review |
 |---|---|---|---|---|---|---|
 | K001-01 | [K001.jsonl:1](K001.jsonl#L1) | aeoess | pass | pico_amdal |  |  |
